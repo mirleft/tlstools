@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!--[if lt IE 9]> <script src="./html5.js"></script><![endif]-->
+  <title>OCaml-TLS demo server</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+  <script src="jquery-1.11.1.min.js"></script>
+  <script src="underscore-min.js"></script>
+  <script src="raphael-min.js"></script>
+  <script type="text/javascript" src="sequence-diagram-min.js"></script>
+  <script type="text/javascript" src="gui.js"></script>
+  <script type="text/javascript">window.onload = initialise</script>
+</head>
+<body>
+  <section id="info">
+    wire <input type="checkbox" id="wire_check"></input>
+    crypt <input type="checkbox" id="crypt_check"></input>
+    plain <input type="checkbox" id="plain_check"></input>
+    parse <input type="checkbox" id="parse_check" checked="checked"></input>
+    kdf <input type="checkbox" id="kdf_check" checked="checked"></input>
+  </section>
+  <section id="demo">
+    <div id="diagram">This should be a diagram! If you don't see it you need Javascript enabled</div>
+    <div id="demo-info">
+      <div id="details-div">
+        <h2>Message details</h2>
+        <p class="rfc-chapter chapter-NONE">Click the arrow labels!</p>
+        <ul id="details"><li>Intentionally left blank</li></ul>
+      </div>
+</div>
+</section>
+</body>
+</html>

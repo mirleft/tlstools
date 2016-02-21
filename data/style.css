@@ -1,0 +1,86 @@
+/* Reset a few things */
+
+*, *:before, *:after { -webkit-box-sizing: border-box;
+                       -moz-box-sizing: border-box;
+                       box-sizing: border-box; }
+
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,
+address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,
+b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,
+thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,
+hgroup,menu,nav,section,summary,time,mark,audio,video,select
+{ margin: 0; padding: 0; border: 0; outline: 0;
+  font-size: 92%;
+  font-family: inherit;
+  font-weight: inherit;
+  background: transparent; color: inherit;
+  vertical-align: baseline; }
+
+ol, ul { list-style: none }
+
+/* Center body */
+html, body { top: 0px; right: 0px; bottom: 0px; left: 0px; height: 100%;
+             margin: auto;}
+
+body { color: black;
+       background-color: white;
+       font-size: 1em;
+       line-height: 1.3125em;
+       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+       -webkit-text-size-adjust: none;
+       -moz-text-size-adjust: none;
+       text-size-adjust: none;
+       margin-top: 1px; /* force scroll bar */
+       min-width: 20em;
+       max-width: 42em;
+       margin-top: 2.25em;
+       text-align: left; }
+
+h1 { font-weight:normal; font-size:3em; line-height: 1.3125em;
+     text-transform: uppercase; }
+
+h2 { font-weight:bold; text-transform:uppercase }
+h2 { margin-top: 1.3125em; }
+section { margin-top: 1.3125em; margin-left:1.25em;
+                  margin-right:1.25em; }
+
+footer { font-size:0.75em; line-height: 1.75em;
+         margin-top:1.6666em;
+         margin-left:1.6666em;
+         margin-right:1.6666em; padding-bottom:1.6666em}
+
+p, pre { margin-top: 1.3125em; }
+
+
+#demo > div { display: inline-block; vertical-align:top; }
+#diagram { width:50%; }
+#demo-info { width:49% }
+
+.rfc-chapter h4, .rfc-chapter h3, .rfc-chapter h2,
+.rfc-chapter em, .rfc-chapter p, .rfc-chapter ul,
+pre { font-family:monospace; font-size:0.75em; line-height:1.75em; }
+
+.rfc-chapter h4, .rfc-chapter h3, .rfc-chapter h2 { margin-top: 1.75em }
+.rfc-chapter em { margin-top: 1.75em; display:block; }
+
+#rfc pre, #details-div pre {
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+input { margin-top: 1em; font: inherit; vertical-align:bottom; }
+
+strong { font-weight:bold }
+em { font-style: italic }
+
+#diagram svg text { font-size:0.75em !important; }
+
+/* Mobile adjustements */
+@media only screen and (max-width: 540px)
+{
+  #demo > div { display:block }
+  #diagram, #demo-info { width:100% }
+}

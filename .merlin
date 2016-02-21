@@ -1,0 +1,13 @@
+S lib/
+
+B _build/lib
+
+PKG notty
+PKG notty.lwt
+PKG tls
+PKG lwt
+PKG yojson
+PKG sexplib
+PKG astring
+PKG cohttp
+PKG cohttp.lwt

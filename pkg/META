@@ -1,0 +1,8 @@
+version = "0.0.1"
+description = "TLS tools"
+requires = "notty sexplib yojson astring"
+archive(byte) = "tlstools.cma"
+archive(byte, plugin) = "tlstools.cma"
+archive(native) = "tlstools.cmxa"
+archive(native, plugin) = "tlstools.cmxs"
+exists_if = "tlstools.cma"

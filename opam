@@ -1,0 +1,24 @@
+opam-version: "1.2"
+name:         "tlstools"
+homepage:     "https://github.com/mirleft/tlstools"
+dev-repo:     "https://github.com/mirleft/tlstools.git"
+bug-reports:  "https://github.com/mirleft/tlstools/issues"
+author:       ["Hannes Mehnert <hannes@mehnert.org>"]
+maintainer:   ["Hannes Mehnert <hannes@mehnert.org>"]
+license:      "BSD2"
+
+build: [
+  [ "ocaml" "pkg/build.ml" "native=%{ocaml-native}%"
+                           "native-dynlink=%{ocaml-native-dynlink}%" ]
+]
+depends: [
+  "ocamlfind" {build}
+  "ocamlbuild" {build}
+  "lwt"
+  "notty"
+  "astring"
+  "yojson"
+  "cohttp"
+  "sexplib"
+]
+available: [ ocaml-version >= "4.02.2" ]
