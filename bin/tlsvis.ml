@@ -178,13 +178,14 @@ let main flname =
   let state = { flname ; traces ; active = 0 ; filter = [`NoKDF; `NoWire; `NoPlain; `NoCrypt] ; detail = 10 ; dscrol = 0 } in
   let state = { state with active = next state } in
   Sys.(set_signal sigpipe Signal_ignore) ;
-  Lwt_unix.tcgetattr Lwt_unix.stdin >>= fun saved_tc ->
-  let term_cleanup = Lwt_unix.(tcsetattr stdin TCSANOW saved_tc) in
-  Lwt_unix.(tcsetattr stdin TCSANOW { saved_tc with c_ignbrk = true ; c_isig = false ; c_icanon = false ; c_echo = false ; c_vstart = '\255' ; c_vstop = '\255' ; c_verase = '\255' }) >>= fun () ->
-  let term = Notty_lwt.Term.create ~input:Lwt_unix.stdin ~mouse:false () in
+
+  let term = Notty_lwt.Term.create ~mouse:false () in
+
+  let tc = Unix.(tcgetattr stdin) in
+  Unix.(tcsetattr stdin TCSANOW { tc with c_isig = false ; c_ixon = false ; c_ixoff = false }) ;
+
   let size = Notty_lwt.Term.size term in
-  main_loop term size state >>= fun () ->
-  term_cleanup
+  main_loop term size state
 
 let () =
   try
