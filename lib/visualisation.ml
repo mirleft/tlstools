@@ -335,7 +335,7 @@ let to_term attr arrw bw = function
         attr
     in
     let arrow = arrow attr arrw msg dir
-    and data = I.string A.empty "data" (* XXX put summary here! *)
+    and data = I.string attr "data" (* XXX put summary here! *)
     and ovoid = I.void (2 + bw) 0
     in
     (match dir with
@@ -345,7 +345,7 @@ let to_term attr arrw bw = function
     let l = layer_to_string layer in
     let attr = A.(attr ++ color layer) in
     let arrow = arrow attr arrw (l ^ " " ^ msg) dir
-    and data = I.string A.empty (string_of_int cnt ^ " bytes " ^ l)
+    and data = I.string attr (string_of_int cnt ^ " bytes " ^ l)
     and ovoid = I.void (2 + bw) 0
     in
     (match dir with

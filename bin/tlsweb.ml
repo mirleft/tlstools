@@ -65,6 +65,7 @@ let server filename =
   let sexps = Sexplib.Sexp.load_sexps filename in
   let traces = Visualisation.filter_map ~f:Visualisation.Of_Sexp.to_trace sexps in
   let data = Yojson.to_string (`List (List.map Visualisation.to_json traces)) in
+  Printf.printf "listening on port 8000\n" ;
   Server.create ~mode:(`TCP (`Port 8000)) (Server.make ~callback:(callback data) ())
 
 let () =
