@@ -12,12 +12,13 @@ let direction_to_string = function `In -> "in" | `Out -> "out"
 
 type data = (string * string) list
 
-type tag = [ `KDF | `Failure | `Note ]
+type tag = [ `KDF | `Failure | `Note | `New ]
 
 let tag_to_string = function
   | `KDF -> "kdf"
   | `Failure -> "failure"
   | `Note -> "note"
+  | `New -> "connection"
 
 type layer = [ `Wire | `Crypted_record | `Plain_record ]
 
@@ -275,9 +276,12 @@ module Of_Sexp = struct
         | x, Atom str when String.length x > 6 && String.sub x 0 6 = "crypto" ->
           Some (`Note (None, `KDF, x, to_hex str))
 
+        | "client-connect", Atom client ->
+          Some (`Note (None, `New, "new client", client))
         | "state-in", _ -> None
         | "state-out", _ -> None
         | "buf-in", _ -> None (* happens before dropping and bailing on a record, but we've a wire-in now *)
+        | "Fatal", _ -> None (* there's already a failure *)
         | _ ->
           Printf.printf "fall through inner match with %s = %s\n" tag (Sexplib.Sexp.to_string_hum sexps) ;
           None
@@ -354,6 +358,7 @@ let to_term attr arrw bw = function
   | `Note (dir, tag, title, msg) ->
     let attr = match tag with
       | `Failure -> A.(attr ++ A.fg red)
+      | `New -> A.(attr ++ A.fg lightblue)
       | _ -> attr
     in
     let title = I.string attr title
